@@ -23,18 +23,18 @@ const colorVariants = [
 ];
 
 const InstructorCard: React.FC<InstructorCardProps> = ({ instructor }) => {
- 
-      
+
+
   return (
     <Card className="group flex flex-col justify-between h-[580px] w-full rounded-3xl border border-gray-200 bg-white shadow-lg transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1 overflow-hidden">
       {/* Image Section */}
-      <div className="w-full h-64 overflow-hidden">
+      <div className="w-full h-64 overflow-hidden relative">
         <Image
           src={instructor.image}
           alt={instructor.name}
-          width={400}
-          height={256}
-          className="w-auto h-auto object-cover transition-transform duration-300 group-hover:scale-105"
+          width={400} // or whatever fits your layout
+          height={256} // h-64 = 16rem = 256px
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>
 
