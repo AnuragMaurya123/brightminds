@@ -6,7 +6,8 @@ const nextConfig: NextConfig = {
       "images.unsplash.com",
       "themewagon.github.io",
       "imgs.search.brave.com",
-      "randomuser.me"
+      "randomuser.me",
+      "images.pexels.com"
     ],
   },
 };

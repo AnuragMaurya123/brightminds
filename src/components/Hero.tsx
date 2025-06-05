@@ -5,6 +5,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { slides } from '@/constant';
 import { FlipText } from '@/components/magicui/flip-text';
+import Image from 'next/image';
 
 const responsive = {
   desktop: {
@@ -39,11 +40,12 @@ export default function HeroSlider() {
           <div key={index} className="relative w-full h-full">
             {/* Background Image */}
             <div className="relative w-full h-full">
-              <img
+              <Image
                 src={slide.image}
                 alt={slide.title}
-                className="object-cover w-full h-full"
-                 sizes="(max-width: 768px) 100vw, 33vw"
+                width={1200}       // set natural image size
+                height={600}
+                layout="responsive"
               />
               <div className="absolute inset-0 bg-black/50" />
             </div>
