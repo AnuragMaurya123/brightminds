@@ -45,7 +45,7 @@ const InstructorCard: React.FC<InstructorCardProps> = ({ instructor }) => {
           <CardTitle className="text-lg font-bold text-gray-900">
             {instructor.name}
           </CardTitle>
-          <p className="text-sm font-medium text-indigo-600 mt-1">
+          <p className="text-sm font-medium text-amber-600 mt-1">
             {instructor.title}
           </p>
         </CardHeader>

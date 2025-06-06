@@ -14,9 +14,9 @@ export default function Home() {
         <Hero/> 
         <NewsMarquee/>
         <AboutUs/> 
+        <CoursesSlider/>
         <Instructor/>
         <Gallery/>
-        <CoursesSlider/>
         <WhyChooseUs/> 
         <TestimonialCarousel/>
     </div>

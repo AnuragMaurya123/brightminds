@@ -5,6 +5,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import InstructorCard from "./InstructorCard";
 import { instructorsData } from "@/constant";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const responsive = {
   superLargeDesktop: {
@@ -26,6 +27,26 @@ const responsive = {
   },
 };
 
+const CustomLeftArrow = ({ onClick }: { onClick?: () => void }) => (
+  <div
+    onClick={onClick}
+    className="absolute left-4 top-1/2 z-20 -translate-y-1/2 cursor-pointer rounded-full bg-white p-3 shadow-lg transition-all hover:scale-110 hover:bg-orange-50 border border-orange-200"
+    aria-label="Previous"
+  >
+    <ChevronLeft size={24} className="text-orange-600" />
+  </div>
+)
+
+const CustomRightArrow = ({ onClick }: { onClick?: () => void }) => (
+  <div
+    onClick={onClick}
+    className="absolute right-4 top-1/2 z-20 -translate-y-1/2 cursor-pointer rounded-full bg-white p-3 shadow-lg transition-all hover:scale-110 hover:bg-orange-50 border border-orange-200"
+    aria-label="Next"
+  >
+    <ChevronRight size={24} className="text-orange-600" />
+  </div>
+)
+
 
 
 export default function Instructor() {
@@ -45,17 +66,19 @@ export default function Instructor() {
 
         {/* Carousel */}
         <Carousel
-          responsive={responsive}
-          infinite
-          autoPlay
-          autoPlaySpeed={2500}
-          keyBoardControl
-          pauseOnHover
-          showDots={false}
-          arrows={false}
-          itemClass="px-3 pb-4"
-          containerClass="pb-8"
-          partialVisible
+           responsive={responsive}
+            infinite
+            autoPlay
+            autoPlaySpeed={3500}
+            keyBoardControl
+            pauseOnHover
+            showDots={false}
+            arrows
+            customLeftArrow={<CustomLeftArrow />}
+            customRightArrow={<CustomRightArrow />}
+            itemClass="px-4 py-2"
+            containerClass="pb-8"
+            partialVisible
         >
           {instructorsData.map((instructor) => (
             <InstructorCard key={instructor.id} instructor={instructor} />

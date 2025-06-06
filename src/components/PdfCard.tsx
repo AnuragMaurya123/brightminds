@@ -1,35 +1,52 @@
-import React from "react";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, BookOpenCheck } from "lucide-react";
-import { PdfNoteProps } from "@/constant";
-import Link from "next/link";
+import { FileText, Download } from "lucide-react"
+import Link from "next/link"
 
-export default function PdfCard({ lesson, noteTitle, pdfUrl }: PdfNoteProps) {
+interface PdfCardProps {
+  lesson: string
+  noteTitle: string
+  pdfUrl: string
+}
+
+export default function PdfCard({ lesson, noteTitle, pdfUrl }: PdfCardProps) {
   return (
-    <Card className="group shadow-lg rounded-2xl overflow-hidden flex flex-col justify-between h-full pt-4 border border-gray-200 transition-transform hover:scale-[1.02] hover:shadow-xl duration-300">
-      <CardHeader className="space-y-1">
-        <p className="text-sm  flex items-start gap-2 "><BookOpenCheck className="text-amber-600"/> Lesson: <span className="font-medium text-gray-800">{lesson}</span></p>
-        <p className="text-base font-semibold text-gray-900">{noteTitle}</p>
-      </CardHeader>
+    <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-amber-100 h-full flex flex-col">
+      {/* Card header with gradient */}
+      <div className="bg-gradient-to-r from-amber-500 to-amber-600 p-4 relative">
+        <div className="absolute top-0 right-0 w-24 h-24 bg-white opacity-10 rounded-bl-full"></div>
+        <div className="flex items-center">
+          <div className="bg-white/20 p-3 rounded-lg backdrop-blur-sm">
+            <FileText className="text-white" size={24} />
+          </div>
+          <div className="ml-3">
+            <h3 className="text-white font-medium text-sm">{lesson}</h3>
+            <p className="text-amber-100 text-xs">PDF Document</p>
+          </div>
+        </div>
+      </div>
 
-      <CardContent className="flex-1">
-        <div className="border border-gray-300 rounded-lg overflow-hidden h-[180px] transition-all duration-300 group-hover:border-amber-600">
-          <iframe
+      {/* Card content */}
+      <div className="p-5 flex-grow">
+        <h4 className="font-bold text-lg text-gray-800 mb-2 line-clamp-2">{noteTitle}</h4>
+        <p className="text-gray-500 text-sm mb-4">Complete study material with examples and practice questions</p>
+         <iframe
             src={pdfUrl + "#toolbar=0&navpanes=0&scrollbar=0"}
             title="PDF Preview"
             className="w-full h-full rounded-md"
           />
-        </div>
-      </CardContent>
-
-      <div className="px-4 pb-4">
-        <Button asChild className="w-full bg-amber-600 hover:bg-amber-700 transition text-white font-semibold text-sm tracking-wide">
-          <Link href={pdfUrl} target="_blank" rel="noopener noreferrer">
-            View & Download PDF <ArrowRight className="ml-2 w-4 h-4" />
-          </Link>
-        </Button>
       </div>
-    </Card>
-  );
+
+      {/* Card actions */}
+      <div className="border-t border-amber-100 p-4 flex justify-between">
+        
+        <Link
+          href={pdfUrl}
+          download
+          className="flex items-center bg-amber-50 hover:bg-amber-100 text-amber-600 px-3 py-1 rounded-full transition-colors text-sm font-medium"
+        >
+          <Download size={16} className="mr-1" />
+          Download
+        </Link>
+      </div>
+    </div>
+  )
 }
