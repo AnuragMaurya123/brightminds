@@ -3,7 +3,6 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import InstructorCard from "./InstructorCard";
 import { instructorsData } from "@/constant";
 
@@ -27,24 +26,7 @@ const responsive = {
   },
 };
 
-// Custom Arrow Components that ignore carouselState
-const CustomLeftArrow = ({ onClick }: { onClick?: () => void }) => (
-  <div
-    onClick={onClick}
-    className="absolute left-0 top-1/2 z-10 -translate-y-1/2 cursor-pointer bg-amber-600 p-2 px-5 py-5 shadow transition group hover:bg-gray-100"
-  >
-    <ChevronLeft size={24} className="text-white transition group-hover:text-amber-600" />
-  </div>
-);
 
-const CustomRightArrow = ({ onClick }: { onClick?: () => void }) => (
-  <div
-    onClick={onClick}
-    className="absolute right-0 top-1/2 z-10 -translate-y-1/2 cursor-pointer bg-amber-600 p-2 px-5 py-5 shadow transition group hover:bg-gray-100"
-  >
-    <ChevronRight size={24} className="text-white transition group-hover:text-amber-600" />
-  </div>
-);
 
 export default function Instructor() {
   return (
@@ -70,9 +52,7 @@ export default function Instructor() {
           keyBoardControl
           pauseOnHover
           showDots={false}
-          arrows
-          customLeftArrow={<CustomLeftArrow />}
-          customRightArrow={<CustomRightArrow />}
+          arrows={false}
           itemClass="px-3 pb-4"
           containerClass="pb-8"
           partialVisible

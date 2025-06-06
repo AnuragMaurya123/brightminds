@@ -5,7 +5,6 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { pdfNotes } from "@/constant";
 import PdfCard from "./PdfCard";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const responsive = {
   superLargeDesktop: { breakpoint: { max: 4000, min: 1536 }, items: 3 },
@@ -14,23 +13,6 @@ const responsive = {
   mobile: { breakpoint: { max: 640, min: 0 }, items: 1, partialVisibilityGutter: 40 },
 };
 
-const CustomLeftArrow = ({ onClick }: { onClick?: () => void }) => (
-  <div
-    onClick={onClick}
-    className="absolute left-4 top-1/2 z-20 -translate-y-1/2 cursor-pointer rounded-full bg-white p-2 shadow-lg transition hover:scale-105"
-  >
-    <ChevronLeft size={24} className="text-amber-600" />
-  </div>
-);
-
-const CustomRightArrow = ({ onClick }: { onClick?: () => void }) => (
-  <div
-    onClick={onClick}
-    className="absolute right-4 top-1/2 z-20 -translate-y-1/2 cursor-pointer rounded-full bg-white p-2 shadow-lg transition hover:scale-105"
-  >
-    <ChevronRight size={24} className="text-amber-600" />
-  </div>
-);
 
 export default function PdfCarousel() {
   return (
@@ -49,9 +31,7 @@ export default function PdfCarousel() {
               keyBoardControl
               pauseOnHover
               showDots={false}
-              arrows
-              customLeftArrow={<CustomLeftArrow />}
-              customRightArrow={<CustomRightArrow />}
+              arrows={false} 
               itemClass="px-3 pb-4"
               containerClass="relative"
               partialVisible
