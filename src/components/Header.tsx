@@ -21,14 +21,14 @@ const Header = () => {
             alt="BrightMinds"
             width={60}
             height={60}
-            style={{width:"auto",height:"auto"}}
+            style={{ width: "auto", height: "auto" }}
             priority
           />
           <div className="flex flex-col leading-tight">
-            <span className="uppercase text-xl font-extrabold text-orange-700 tracking-wide">
+            <span className="uppercase text-2xl pacifico-regular text-amber-600 tracking-wide">
               Bright
             </span>
-            <span className="uppercase text-xl font-extrabold text-orange-700 tracking-wide">
+            <span className="uppercase text-2xl pacifico-regular text-amber-600 tracking-wide">
               Minds
             </span>
           </div>

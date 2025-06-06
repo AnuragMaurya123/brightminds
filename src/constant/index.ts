@@ -12,6 +12,10 @@ export const headerOptions = [
     title: "Courses",
   },
   {
+    link: "/notes",
+    title: "Notes",
+  },
+  {
     link: "/gallery",
     title: "Gallery",
   },
@@ -77,7 +81,7 @@ export const instructorsData: Instructor[] = [
     name: "Ms. Priya Nair",
     title: "Social Science Educator",
     bio: "Expert in teaching geography and history with a decade of experience in creating interactive learning modules for middle school.",
-    image: "https://images.unsplash.com/photo-1553769092-0f2c9c1e5299?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+    image: "https://imgs.search.brave.com/O7g385qZFXR1HldtCRglx97edx7fd-3R2kc_HNSW9Kg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNC8w/OS8xNy8xMS80Ny9t/YW4tNDQ5NDA1XzY0/MC5qcGc",
     specialties: ["Geography", "History", "Civics", "Environmental Studies"]
   },
   {
@@ -174,5 +178,126 @@ export const courses:CoursesCardProps[] = [
       "Build cross-platform mobile apps with React Native and Expo.",
     image:
       "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80",
+  },
+];
+
+
+
+export interface PdfNoteProps {
+  lesson: string;
+  noteTitle: string;
+  pdfUrl: string;
+}
+
+export interface SubjectNotes {
+  subject: string;
+  notes: PdfNoteProps[];
+}
+
+export const pdfNotes: SubjectNotes[] = [
+  {
+    subject: "Mathematics",
+    notes: [
+      {
+        lesson: "Algebra",
+        noteTitle: "Quadratic Equations",
+        pdfUrl: "/notes/1.pdf",
+      },
+      {
+        lesson: "Trigonometry",
+        noteTitle: "Introduction to Trigonometry",
+        pdfUrl: "/notes/1.pdf",
+      },
+      {
+        lesson: "Trigonometry",
+        noteTitle: "Introduction to Trigonometry",
+        pdfUrl: "/notes/1.pdf",
+      },
+      {
+        lesson: "Trigonometry",
+        noteTitle: "Introduction to Trigonometry",
+        pdfUrl: "/notes/1.pdf",
+      },
+      {
+        lesson: "Trigonometry",
+        noteTitle: "Introduction to Trigonometry",
+        pdfUrl: "/notes/1.pdf",
+      },
+    ],
+  },
+  {
+    subject: "Physics",
+    notes: [
+      {
+        lesson: "Motion",
+        noteTitle: "Laws of Motion",
+        pdfUrl: "/notes/1.pdf",
+      },
+      {
+        lesson: "Work and Energy",
+        noteTitle: "Work, Power, Energy",
+        pdfUrl: "/notes/1.pdf",
+      },
+      {
+        lesson: "Work and Energy",
+        noteTitle: "Work, Power, Energy",
+        pdfUrl: "/notes/1.pdf",
+      },
+      {
+        lesson: "Work and Energy",
+        noteTitle: "Work, Power, Energy",
+        pdfUrl: "/notes/1.pdf",
+      },
+      {
+        lesson: "Work and Energy",
+        noteTitle: "Work, Power, Energy",
+        pdfUrl: "/notes/1.pdf",
+      },
+      {
+        lesson: "Work and Energy",
+        noteTitle: "Work, Power, Energy",
+        pdfUrl: "/notes/1.pdf",
+      },
+    ],
+  },
+  {
+    subject: "Chemistry",
+    notes: [
+      {
+        lesson: "Atoms",
+        noteTitle: "Atomic Structure",
+        pdfUrl: "/notes/1.pdf",
+      },
+      {
+        lesson: "Bonds",
+        noteTitle: "Chemical Bonding",
+        pdfUrl: "/notes/1.pdf",
+      },
+      {
+        lesson: "Bonds",
+        noteTitle: "Chemical Bonding",
+        pdfUrl: "/notes/1.pdf",
+      },
+      {
+        lesson: "Bonds",
+        noteTitle: "Chemical Bonding",
+        pdfUrl: "/notes/1.pdf",
+      },
+      {
+        lesson: "Bonds",
+        noteTitle: "Chemical Bonding",
+        pdfUrl: "/notes/1.pdf",
+      },
+      {
+        lesson: "Bonds",
+        noteTitle: "Chemical Bonding",
+        pdfUrl: "/notes/1.pdf",
+      },
+      {
+        lesson: "Bonds",
+        noteTitle: "Chemical Bonding",
+        pdfUrl: "/notes/1.pdf",
+      },
+    ],
   },
 ];

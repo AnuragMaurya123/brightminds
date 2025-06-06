@@ -28,15 +28,16 @@ const InstructorCard: React.FC<InstructorCardProps> = ({ instructor }) => {
   return (
     <Card className="group flex flex-col justify-between h-[580px] w-full rounded-3xl border border-gray-200 bg-white shadow-lg transition-transform duration-300 hover:shadow-2xl hover:-translate-y-1 overflow-hidden">
       {/* Image Section */}
-      <div className="w-full h-64 overflow-hidden relative">
+      <div className="relative w-full h-64 overflow-hidden">
         <Image
           src={instructor.image}
           alt={instructor.name}
-          width={400} // or whatever fits your layout
-          height={256} // h-64 = 16rem = 256px
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          fill
+          className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, 33vw"
         />
       </div>
+
 
       {/* Info Section */}
       <div className="flex flex-col flex-grow px-6 pt-4 text-center">

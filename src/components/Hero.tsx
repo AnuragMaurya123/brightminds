@@ -24,14 +24,14 @@ const responsive = {
 
 export default function HeroSlider() {
   return (
-    <section className="relative w-full h-screen max-h-[90vh] overflow-hidden bg-black">
+    <section className="relative w-full overflow-hidden bg-black">
       <Carousel
         responsive={responsive}
         infinite
-        autoPlay
+        autoPlay={false}
         autoPlaySpeed={4000}
         showDots={false}
-        arrows={true} // you can set false and add custom arrows if you want
+        arrows={true}
         containerClass="h-full"
         itemClass="h-full"
         customTransition="all 0.5s ease-in-out"
@@ -39,23 +39,24 @@ export default function HeroSlider() {
         {slides.map((slide, index) => (
           <div key={index} className="relative w-full h-full">
             {/* Background Image */}
-            <div className="relative w-full h-full">
+            <div className="relative w-full h-[400px] sm:h-[700px]">
               <Image
                 src={slide.image}
                 alt={slide.title}
-                width={1200}       // set natural image size
-                height={600}
-                layout="responsive"
+                fill
+                priority
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, 100vw"
               />
               <div className="absolute inset-0 bg-black/50" />
             </div>
 
             {/* Text Overlay */}
             <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 sm:px-8 z-20">
-              <FlipText className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-orange-400 drop-shadow-lg mb-4 max-w-[90%] sm:max-w-2xl">
+              <FlipText className="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-orange-400 drop-shadow-lg mb-3 sm:mb-4">
                 {slide.title}
               </FlipText>
-              <FlipText className="text-xs sm:text-base md:text-lg lg:text-xl text-white drop-shadow-md max-w-[90%] sm:max-w-xl">
+              <FlipText className="text-sm sm:text-base md:text-lg lg:text-xl text-white drop-shadow-md">
                 {slide.subtitle}
               </FlipText>
             </div>

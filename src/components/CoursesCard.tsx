@@ -1,15 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 import { CoursesCardProps } from "@/constant";
 
 export default function CoursesCard({ id, title, description, image }: CoursesCardProps) {
   return (
     <Card
       key={id}
-      className="h-[500px] flex flex-col shadow-xl rounded-2xl overflow-hidden group transition-transform duration-300 hover:scale-105 hover:shadow-2xl will-change-transform"
+      className="h-[400px] flex flex-col shadow-xl rounded-2xl text-center overflow-hidden group transition-transform duration-300 hover:scale-105 hover:shadow-2xl will-change-transform"
     >
       {/* Image */}
       <div className="relative w-full h-48">
@@ -36,15 +36,7 @@ export default function CoursesCard({ id, title, description, image }: CoursesCa
         <p className="line-clamp-4">{description}</p>
       </CardContent>
 
-      {/* Card Footer */}
-      <CardFooter className="p-4 sm:p-5 bg-white">
-        <Button
-          variant="outline"
-          className="w-full text-sm sm:text-base font-medium hover:bg-amber-50 hover:text-amber-600 transition"
-        >
-          Learn More
-        </Button>
-      </CardFooter>
+    
     </Card>
   );
 }

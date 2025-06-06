@@ -1,21 +1,18 @@
 "use client";
-
+import ContactForm from "@/components/ContactForm";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function ContactPage() {
+
   return (
     <main className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 py-20 space-y-16">
       {/* Header */}
       <header className="text-center space-y-4">
-        <h1 className="text-4xl sm:text-5xl font-extrabold  text-amber-600">
-          Contact Us
-        </h1>
-        <p className="text-gray-700 text-base sm:text-lg">
-          We’re here to help. Reach out to us anytime.
-        </p>
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-amber-600">Contact Us</h1>
+        <p className="text-gray-700 text-base sm:text-lg">We’re here to help. Reach out to us anytime.</p>
       </header>
 
-      {/* Contact Info Cards */}
+      {/* Contact Info */}
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         <div className="bg-white shadow-md rounded-xl p-6 flex items-start space-x-4">
           <MapPin className="text-amber-600 mt-1" size={24} />
@@ -50,10 +47,14 @@ export default function ContactPage() {
           width="100%"
           height="100%"
           loading="lazy"
-          allowFullScreen
           className="border-0 w-full h-full"
+          allowFullScreen
         />
       </section>
+
+      {/* Contact Form */}
+      <ContactForm/>
+      
     </main>
   );
 }

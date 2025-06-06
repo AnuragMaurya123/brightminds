@@ -31,8 +31,10 @@ export default function About() {
                             alt="About us"
                             width={500}
                             height={500}
-                            className="rounded-3xl shadow-2xl object-cover w-auto h-auto"
-                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            className="object-cover rounded-lg w-full h-full"
+                            priority
+                            
                         />
                     </div>
                 </section>

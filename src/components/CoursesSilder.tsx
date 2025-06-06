@@ -6,6 +6,7 @@ import "react-multi-carousel/lib/styles.css";
 import { courses } from "@/constant";
 import CoursesCard from "./CoursesCard"; // Make sure path is correct
 
+
 export default function CoursesSlider() {
 
     const responsive = {
@@ -27,10 +28,12 @@ export default function CoursesSlider() {
         partialVisibilityGutter: 40,
       },
     };
-    
+
+
+
 
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 py-20 space-y-20 overflow-hidden">
+    <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 py-10 space-y-20 overflow-hidden">
       {/* Header */}
         <div className="text-center mb-14 space-y-2">
           <span className="text-md text-orange-500 uppercase font-bold tracking-wide">
@@ -44,7 +47,7 @@ export default function CoursesSlider() {
 
       <section className="relative max-w-5xl mx-auto">
         <Carousel
-          responsive={responsive}
+         responsive={responsive}
           infinite
           autoPlay
           autoPlaySpeed={2500}
@@ -54,7 +57,7 @@ export default function CoursesSlider() {
           arrows={false}
           itemClass="px-3 pb-4"
           containerClass="pb-8"
-          partialVisible
+          partialVisible    
         >
           {courses.map((course) => (
             <CoursesCard

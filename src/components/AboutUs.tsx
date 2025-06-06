@@ -15,6 +15,7 @@ export default function AboutUs() {
           alt="About Us"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover rounded-lg"
+          priority
         />
       </div>
 
@@ -29,7 +30,7 @@ export default function AboutUs() {
         </p>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 gap-6 mt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
           <StatCard icon={<BookOpen size={28} />} label="Available Subjects" value={120} />
           <StatCard icon={<Video size={28} />} label="Online Courses" value={85} />
           <StatCard icon={<Users size={28} />} label="Skilled Instructors" value={45} />
