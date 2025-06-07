@@ -2,9 +2,9 @@
 import Carousel from "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css"
 import { pdfNotes } from "@/constant"
-
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import PdfCard from "./PdfCard"
+
 
 const responsive = {
   superLargeDesktop: { breakpoint: { max: 4000, min: 1536 }, items: 3 },

@@ -81,7 +81,7 @@ export default function AboutUs() {
           
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-6 mt-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12">
               <StatCard
                 icon={<BookOpen size={28} className="text-orange-500" />}
                 label="Available Subjects"

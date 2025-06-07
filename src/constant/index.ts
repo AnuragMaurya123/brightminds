@@ -27,17 +27,17 @@ export const headerOptions = [
 
  export const slides = [
    {
-     image: 'https://images.pexels.com/photos/1462630/pexels-photo-1462630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+     image: '/slider.jpg',
      title: 'Empower Bright Minds',
      subtitle: 'Join our learning revolution and discover your true potential.',
    },
    {
-     image: 'https://images.pexels.com/photos/1462630/pexels-photo-1462630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+     image: '/slider.jpg',
      title: 'Learn from Experts',
      subtitle: 'Courses led by industry leaders with real-world experience.',
    },
    {
-     image: 'https://images.pexels.com/photos/1462630/pexels-photo-1462630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+     image: '/slider.jpg',
      title: 'Build Your Career',
      subtitle: 'We help you land your dream job with career-ready skills.',
    },
