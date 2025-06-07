@@ -95,41 +95,51 @@ export const instructorsData: Instructor[] = [
 ];
 
 
-export interface Testimonial {
-  id: number;
-  name: string;
-  role: string;
-  message: string;
-  image: string;
-  rating: number; // ⭐ from 1 to 5
+export interface TopperStudent {
+  id: number
+  name: string
+  image: string
+  standard: string
+  marks: number
 }
 
-export const testimonialsData: Testimonial[] = [
+export const topperStudents: TopperStudent[] = [
   {
     id: 1,
-    name: "Aarav Mehta",
-    role: "Software Engineer",
-    message: "This platform truly transformed the way I learned. The instructors are top-notch and content is super engaging.",
-    image: "/person1.webp",
-    rating: 5,
+    name: "Aamantabish Siddiqui",
+    image: "/reviews/1.jpg",
+    standard: "Class 10",
+    marks: 93,
   },
   {
     id: 2,
-    name: "Priya Sharma",
-    role: "Data Scientist",
-    message: "The structured curriculum and real-world projects helped me land my dream job. Highly recommended!",
-    image: "/person2.webp",
-    rating: 4,
+    name: "Govind Rana",
+    image: "/reviews/2.jpg",
+    standard: "Class 10",
+    marks: 90,
   },
   {
     id: 3,
-    name: "Rahul Verma",
-    role: "Product Manager",
-    message: "Not just theory but practical applications made this learning journey truly impactful. Love it!",
-    image: "/person3.webp",
-    rating: 5,
+    name: "Sahnawaj Ansari",
+    image: "/reviews/3.jpg",
+    standard: "Class 10",
+    marks: 87,
   },
-];
+  {
+    id: 4,
+    name: "Esmita Singh",
+    image: "/reviews/4.jpg",
+    standard: "Class 10",
+    marks: 87,
+  },
+  {
+    id: 5,
+    name: "Aryan Gupta",
+    image: "/reviews/5.jpg",
+    standard: "Class 10",
+    marks: 91,
+  },
+]
 export interface CoursesCardProps {
   id: number;
   title: string;

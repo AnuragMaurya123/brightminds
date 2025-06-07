@@ -68,7 +68,7 @@ export default function WhyChooseUs() {
           className="relative w-full md:w-1/2 h-[500px] rounded-xl overflow-hidden shadow-xl"
         >
           <Image
-            src="/why-choose-us.jpg"
+            src="/person1.webp"
             fill
             alt="Why Choose Us"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
