@@ -8,29 +8,15 @@ import { instructorsData } from "@/constant";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const responsive = {
-  superLargeDesktop: {
-    breakpoint: { max: 4000, min: 1536 },
-    items: 3,
-  },
-  desktop: {
-    breakpoint: { max: 1536, min: 1024 },
-    items: 3,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 640 },
-    items: 2,
-  },
-  mobile: {
-    breakpoint: { max: 640, min: 0 },
-    items: 1,
-    partialVisibilityGutter: 40,
-  },
-};
-
+  superLargeDesktop: { breakpoint: { max: 4000, min: 1536 }, items: 3 },
+  desktop: { breakpoint: { max: 1536, min: 1024 }, items: 3 },
+  tablet: { breakpoint: { max: 1024, min: 640 }, items: 2 },
+  mobile: { breakpoint: { max: 640, min: 0 }, items: 1, partialVisibilityGutter: 10 },
+}
 const CustomLeftArrow = ({ onClick }: { onClick?: () => void }) => (
   <div
     onClick={onClick}
-    className="absolute left-4 top-1/2 z-20 -translate-y-1/2 cursor-pointer rounded-full bg-white p-3 shadow-lg transition-all hover:scale-110 hover:bg-orange-50 border border-orange-200"
+    className="absolute left-0 top-1/2 z-20  cursor-pointer rounded-full bg-white p-3 shadow-lg transition-all hover:scale-110 hover:bg-orange-50 border border-orange-200"
     aria-label="Previous"
   >
     <ChevronLeft size={24} className="text-orange-600" />
@@ -40,7 +26,7 @@ const CustomLeftArrow = ({ onClick }: { onClick?: () => void }) => (
 const CustomRightArrow = ({ onClick }: { onClick?: () => void }) => (
   <div
     onClick={onClick}
-    className="absolute right-4 top-1/2 z-20 -translate-y-1/2 cursor-pointer rounded-full bg-white p-3 shadow-lg transition-all hover:scale-110 hover:bg-orange-50 border border-orange-200"
+    className="absolute right-0 top-1/2 z-20  cursor-pointer rounded-full bg-white p-3 shadow-lg transition-all hover:scale-110 hover:bg-orange-50 border border-orange-200"
     aria-label="Next"
   >
     <ChevronRight size={24} className="text-orange-600" />

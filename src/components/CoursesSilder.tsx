@@ -9,7 +9,7 @@ import CoursesCard from "./CoursesCard"
 const CustomLeftArrow = ({ onClick }: { onClick?: () => void }) => (
   <div
     onClick={onClick}
-    className="absolute left-4 top-1/2 z-20 -translate-y-1/2 cursor-pointer rounded-full bg-white p-3 shadow-lg transition-all hover:scale-110 hover:bg-orange-50 border border-orange-200"
+    className="absolute left-0 top-1/2 z-20  cursor-pointer rounded-full bg-white p-3 shadow-lg transition-all hover:scale-110 hover:bg-orange-50 border border-orange-200"
     aria-label="Previous"
   >
     <ChevronLeft size={24} className="text-orange-600" />
@@ -19,7 +19,7 @@ const CustomLeftArrow = ({ onClick }: { onClick?: () => void }) => (
 const CustomRightArrow = ({ onClick }: { onClick?: () => void }) => (
   <div
     onClick={onClick}
-    className="absolute right-4 top-1/2 z-20 -translate-y-1/2 cursor-pointer rounded-full bg-white p-3 shadow-lg transition-all hover:scale-110 hover:bg-orange-50 border border-orange-200"
+    className="absolute right-0 top-1/2 z-20  cursor-pointer rounded-full bg-white p-3 shadow-lg transition-all hover:scale-110 hover:bg-orange-50 border border-orange-200"
     aria-label="Next"
   >
     <ChevronRight size={24} className="text-orange-600" />
@@ -28,20 +28,11 @@ const CustomRightArrow = ({ onClick }: { onClick?: () => void }) => (
 
 export default function CoursesSlider() {
   const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 4000, min: 1536 },
-      items: 3,
-    },
-    desktop: {
-      breakpoint: { max: 1536, min: 1024 },
-      items: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 640 },
-      items: 2,
-    }
+    superLargeDesktop: { breakpoint: { max: 4000, min: 1536 }, items: 3 },
+    desktop: { breakpoint: { max: 1536, min: 1024 }, items: 3 },
+    tablet: { breakpoint: { max: 1024, min: 640 }, items: 2 },
+    mobile: { breakpoint: { max: 640, min: 0 }, items: 1, partialVisibilityGutter: 0 },
   }
-
   return (
     <main className="w-full bg-gradient-to-b from-orange-50 to-white py-20 px-4 relative overflow-hidden">
       {/* Background decoration */}
@@ -74,7 +65,7 @@ export default function CoursesSlider() {
             responsive={responsive}
             infinite
             autoPlay
-            autoPlaySpeed={3500}
+            autoPlaySpeed={4000}
             keyBoardControl
             pauseOnHover
             showDots={true}
@@ -83,6 +74,7 @@ export default function CoursesSlider() {
             customRightArrow={<CustomRightArrow />}
             itemClass="px-4 py-2"
             containerClass="pb-8"
+            partialVisible
           >
             {courses.map((course) => (
               <div key={course.id} className="transition-all transform hover:-translate-y-2 duration-300">
@@ -96,7 +88,7 @@ export default function CoursesSlider() {
             ))}
           </Carousel>
 
-          
+
         </section>
 
       </div>
