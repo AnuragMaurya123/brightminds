@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-@import "tailwindcss";
+@import "tailwindcss" important;
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -157,4 +157,14 @@
 
 .hover-underline:hover::after {
   width: 100%;
+}
+
+@layer components {
+  .react-multi-carousel-dot button {
+    @apply bg-orange-300 border-0;
+  }
+
+  .react-multi-carousel-dot--active button {
+    @apply bg-amber-600; /* or bg-tech-blue if defined in Tailwind config */
+  }
 }

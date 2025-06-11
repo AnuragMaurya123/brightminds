@@ -63,7 +63,7 @@ export default function PdfCarousel() {
                 autoPlaySpeed={4000}
                 keyBoardControl
                 pauseOnHover
-                showDots={false}
+                showDots={true}
                 arrows
                 customLeftArrow={<CustomLeftArrow />}
                 customRightArrow={<CustomRightArrow />}
@@ -78,17 +78,7 @@ export default function PdfCarousel() {
                 ))}
               </Carousel>
 
-              {/* Carousel indicator dots */}
-              <div className="flex justify-center mt-6 gap-2">
-                {[...Array(Math.min(5, data.notes.length))].map((_, i) => (
-                  <div
-                    key={i}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      i === 0 ? "w-8 bg-amber-600" : "w-2 bg-amber-300"
-                    }`}
-                  ></div>
-                ))}
-              </div>
+              
             </div>
           </div>
         ))}

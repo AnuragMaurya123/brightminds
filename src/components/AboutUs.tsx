@@ -73,7 +73,7 @@ export default function AboutUs() {
               </p>
 
               <p className="text-gray-600 leading-relaxed">
-                With a diverse range of courses and a community of passionate educators, we make quality education
+                With a diverse range of Coaching and a community of passionate educators, we make quality education
                 accessible to everyone, everywhere.
               </p>
             </div>
@@ -87,7 +87,7 @@ export default function AboutUs() {
                 label="Available Subjects"
                 value={120}
               />
-              <StatCard icon={<Video size={28} className="text-blue-500" />} label="Online Courses" value={85} />
+              <StatCard icon={<Video size={28} className="text-blue-500" />} label="Online Coaching" value={85} />
               <StatCard icon={<Users size={28} className="text-green-500" />} label="Skilled Instructors" value={45} />
               <StatCard icon={<Smile size={28} className="text-purple-500" />} label="Happy Students" value={2300} />
             </div>

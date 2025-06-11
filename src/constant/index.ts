@@ -9,7 +9,7 @@ export const headerOptions = [
   },
   {
     link: "/courses",
-    title: "Courses",
+    title: "Coaching",
   },
   {
     link: "/notes",
@@ -151,41 +151,49 @@ export interface CoursesCardProps {
 export const courses:CoursesCardProps[] = [
   {
     id: 1,
-    title: "Full Stack Web Development",
+    title: "Pre-Primary, Primary, Secondary",
     description:
-      "Learn to build modern web applications with React, Node.js, Express, and MongoDB.",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
     image:
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80",
+      "https://imgs.search.brave.com/XQODj7AM6wM_-mPvyZuc5ZOammDZu280XqCT4FBZPRw/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTAw/NzIyNjg4Ni9waG90/by9wYXJ0aWNpcGF0/aW5nLWluLWhpcy1l/bGVtZW50YXJ5LWNs/YXNzLmpwZz9zPTYx/Mng2MTImdz0wJms9/MjAmYz1JWUFEdG43/bVRWeGRpMGVhLW9h/Q1M4eEtiMU1yS1hI/ZTFQc0VHa0dxN19F/PQ",
   },
   {
     id: 2,
-    title: "Data Science & Machine Learning",
+    title: "11th & 12th Commerce & Science",
     description:
-      "Master data analysis, visualization, and machine learning using Python and popular libraries.",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
     image:
       "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: 3,
-    title: "UI/UX Design Fundamentals",
+    title: "CA/CS/Banking",
     description:
-      "Design beautiful and user-friendly interfaces with modern tools and best practices.",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
     image:
       "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: 4,
-    title: "Cloud Computing with AWS",
+    title: "Government Exam",
     description:
-      "Get hands-on experience deploying and managing cloud infrastructure on AWS.",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
     image:
       "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: 5,
-    title: "Mobile App Development",
+    title: "College Integrated",
     description:
-      "Build cross-platform mobile apps with React Native and Expo.",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    image:
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: 6,
+    title: "Non Integrated",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
     image:
       "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80",
   },

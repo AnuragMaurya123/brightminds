@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import type { CoursesCardProps } from "@/constant"
-import { Clock, Users } from "lucide-react"
+import PopupForm from "./PopupFrom"
 
 export default function CoursesCard({ id, title, description, image }: CoursesCardProps) {
   return (
@@ -44,19 +44,13 @@ export default function CoursesCard({ id, title, description, image }: CoursesCa
         <CardContent className="p-0 flex-1 flex flex-col">
           <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-4 flex-1">{description}</p>
 
-          {/* Course stats */}
-          <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
-            <div className="flex items-center gap-1">
-              <Clock size={14} />
-              <span>8 weeks</span>
-            </div>
-            <div className="flex items-center gap-1">
-              <Users size={14} />
-              <span>1.2k students</span>
-            </div>
-          </div>
+         
         </CardContent>
       </div>
+
+     <div className="flex items-center justify-center px-4 ">
+       <PopupForm label="Inquire Now" selectedCoaching={title} className="bg-orange-500 px-4 py-2 w-full rounded-xl text-white"/>
+     </div>
 
       {/* Bottom accent line */}
       <div className="h-1 bg-gradient-to-r from-orange-500 to-orange-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>

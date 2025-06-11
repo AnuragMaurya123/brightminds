@@ -42,13 +42,7 @@ export default function ContactPage() {
       {/* Google Map */}
       <section className="w-full h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-md">
         <div className="relative w-full h-64 sm:h-96 rounded-lg overflow-hidden">
-          <iframe
-            title="Google Map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.8293196643925!2d77.59456261484898!3d12.97159899085796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670a98312f7%3A0x8f6e8cfded0b7dbf!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1618202295044!5m2!1sen!2sin"
-            className="absolute top-0 left-0 w-full h-full border-0"
-            allowFullScreen
-            loading="lazy"
-          />
+          <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d4125.588290535702!2d72.82134771115354!3d19.412107981787287!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTnCsDI0JzQzLjYiTiA3MsKwNDknMjYuMSJF!5e1!3m2!1sen!2sin!4v1749621554519!5m2!1sen!2sin" width="100%" height="450" style={{border:0}} allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"/>
         </div>
       </section>
 

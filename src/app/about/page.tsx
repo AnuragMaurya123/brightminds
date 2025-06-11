@@ -27,7 +27,7 @@ export default function About() {
                     </div>
                     <div className="flex-1 animate-fadeInUp">
                         <Image
-                            src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=700&q=80"
+                            src="/about.jpg"
                             alt="About us"
                             width={500}
                             height={500}

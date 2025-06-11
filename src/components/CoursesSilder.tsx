@@ -60,15 +60,15 @@ export default function CoursesSlider() {
         <div className="text-center mb-16 space-y-4">
           <div className="inline-block">
             <span className="text-sm text-orange-500 uppercase font-bold tracking-wider bg-orange-100 px-4 py-2 rounded-full">
-              Our Courses
+              Our Coaching
             </span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 bg-clip-text text-transparent">
-            Courses We Offer
+            Coaching We Offer
           </h2>
           <div className="h-1 w-24 bg-gradient-to-r from-orange-500 to-orange-600 mx-auto rounded-full"></div>
           <p className="mt-6 text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Explore our wide range of courses taught by industry experts. Start your learning journey today and unlock
+            Explore our wide range of Coaching taught by industry experts. Start your learning journey today and unlock
             your potential!
           </p>
         </div>
@@ -82,7 +82,7 @@ export default function CoursesSlider() {
             autoPlaySpeed={3500}
             keyBoardControl
             pauseOnHover
-            showDots={false}
+            showDots={true}
             arrows
             customLeftArrow={<CustomLeftArrow />}
             customRightArrow={<CustomRightArrow />}
@@ -102,17 +102,7 @@ export default function CoursesSlider() {
             ))}
           </Carousel>
 
-          {/* Carousel indicators */}
-          <div className="flex justify-center mt-8 gap-2">
-            {[...Array(Math.min(5, courses.length))].map((_, i) => (
-              <div
-                key={i}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  i === 0 ? "w-8 bg-orange-600" : "w-2 bg-orange-300"
-                }`}
-              ></div>
-            ))}
-          </div>
+          
         </section>
 
       </div>
