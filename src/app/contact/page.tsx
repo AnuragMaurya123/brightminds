@@ -1,6 +1,7 @@
 "use client";
 import ContactForm from "@/components/ContactForm";
 import { Mail, Phone, MapPin } from "lucide-react";
+import Link from "next/link";
 
 export default function ContactPage() {
 
@@ -18,7 +19,7 @@ export default function ContactPage() {
           <MapPin className="text-amber-600 mt-1" size={24} />
           <div>
             <h3 className="font-semibold text-lg">Address</h3>
-            <p className="text-sm text-gray-700">123 Tech Street, Bengaluru, India</p>
+            <p className="text-sm text-gray-700">D/101, 1st Floor, Laxmi Nagar Apt., Opp. Kailash Darshan, Alkapuri Road, Nallasopara (East), Dist, Palghar - 401209</p>
           </div>
         </div>
 
@@ -26,7 +27,12 @@ export default function ContactPage() {
           <Mail className="text-amber-600 mt-1" size={24} />
           <div>
             <h3 className="font-semibold text-lg">Email</h3>
-            <p className="text-sm text-gray-700">contact@example.com</p>
+            <Link
+              href="mailto:brightmindclass@gmail.com"
+              className="text-sm text-gray-700"
+            >
+             brightmindclass@gmail.com
+            </Link>
           </div>
         </div>
 
@@ -34,7 +40,13 @@ export default function ContactPage() {
           <Phone className="text-amber-600 mt-1" size={24} />
           <div>
             <h3 className="font-semibold text-lg">Phone</h3>
-            <p className="text-sm text-gray-700">+91 98765 43210</p>
+            <Link href="tel:+918087626258" className="text-sm text-gray-700">
+              +91 8087626258
+            </Link> <br/>
+          
+            <Link href="tel:+917397930070" className="text-sm text-gray-700">
+               +91 7397930070
+            </Link>
           </div>
         </div>
       </section>
