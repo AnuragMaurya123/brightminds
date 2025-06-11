@@ -39,12 +39,7 @@ export default function CoursesSlider() {
     tablet: {
       breakpoint: { max: 1024, min: 640 },
       items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 640, min: 0 },
-      items: 1,
-      partialVisibilityGutter: 40,
-    },
+    }
   }
 
   return (
@@ -88,7 +83,6 @@ export default function CoursesSlider() {
             customRightArrow={<CustomRightArrow />}
             itemClass="px-4 py-2"
             containerClass="pb-8"
-            partialVisible
           >
             {courses.map((course) => (
               <div key={course.id} className="transition-all transform hover:-translate-y-2 duration-300">

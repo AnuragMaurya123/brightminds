@@ -155,15 +155,15 @@ export const courses:CoursesCardProps[] = [
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
     image:
-      "https://imgs.search.brave.com/XQODj7AM6wM_-mPvyZuc5ZOammDZu280XqCT4FBZPRw/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTAw/NzIyNjg4Ni9waG90/by9wYXJ0aWNpcGF0/aW5nLWluLWhpcy1l/bGVtZW50YXJ5LWNs/YXNzLmpwZz9zPTYx/Mng2MTImdz0wJms9/MjAmYz1JWUFEdG43/bVRWeGRpMGVhLW9h/Q1M4eEtiMU1yS1hI/ZTFQc0VHa0dxN19F/PQ",
+      "/coaching/4.jpg",
   },
   {
     id: 2,
-    title: "11th & 12th Commerce & Science",
+    title: "11th & 12th Commerce & Science (Non Integrated / Integrated)",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
     image:
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80",
+      "/coaching/1.jpg",
   },
   {
     id: 3,
@@ -171,7 +171,7 @@ export const courses:CoursesCardProps[] = [
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
     image:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
+      "/coaching/2.webp",
   },
   {
     id: 4,
@@ -179,24 +179,9 @@ export const courses:CoursesCardProps[] = [
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
     image:
-      "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=600&q=80",
+      "/coaching/3.jpg",
   },
-  {
-    id: 5,
-    title: "College Integrated",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-    image:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    id: 6,
-    title: "Non Integrated",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-    image:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80",
-  },
+  
 ];
 
 
