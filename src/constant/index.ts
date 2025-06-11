@@ -159,7 +159,7 @@ export const courses:CoursesCardProps[] = [
   },
   {
     id: 2,
-    title: "11th & 12th Commerce & Science (Non Integrated / Integrated)",
+    title: "11th & 12th Commerce & Science (Integrated / Non Integrated)",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
     image:
