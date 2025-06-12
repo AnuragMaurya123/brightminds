@@ -17,17 +17,18 @@ const InstructorCard: React.FC<InstructorCardProps> = ({ instructor }) => {
 
 
   return (
-    <Card className=" xl:h-[800px] h-[850px] shadow-lg hover:shadow-2xl rounded-2xl overflow-hidden group transition-all duration-500 hover:scale-105 will-change-transform bg-white border-0">
+    <Card className=" xl:h-[470px] h-[550px] shadow-lg hover:shadow-2xl rounded-2xl overflow-hidden group transition-all duration-500 hover:scale-105 will-change-transform bg-white border-0">
       {/* Image Section */}
-     
-        <div className="relative w-full h-[600px] overflow-hidden flex-shrink-0">
-          <Image
-            src={instructor.image}
-            alt={instructor.name}
-            fill
-            className="object-cover transition-transform duration-700 group-hover:scale-110"
-          />
-        </div>
+
+      <div className="relative w-full h-[250px] overflow-hidden flex-shrink-0">
+        <Image
+          src={instructor.image}
+          alt={instructor.name}
+          width={600}
+          height={440}
+          className="object-cover w-full h-full min-h-[400px] max-h-[600px] transition-transform scale-100 duration-700 group-hover:scale-110"
+        />
+      </div>
 
 
 
@@ -45,7 +46,7 @@ const InstructorCard: React.FC<InstructorCardProps> = ({ instructor }) => {
         </CardHeader>
 
         <CardContent className="text-sm text-gray-600 px-2 pb-4">
-          <p className="line-clamp-3">{instructor.bio}</p>
+          <p className=" ">{instructor.bio}</p>
         </CardContent>
       </div>
 
