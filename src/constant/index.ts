@@ -49,49 +49,23 @@ export interface Instructor {
   title: string;
   bio: string;
   image: string;
-  specialties: string[];
 }
 export const instructorsData: Instructor[] = [
   {
     id: 1,
-    name: "Dr. Rajesh Kumar",
-    title: "Head of Mathematics Department",
-    bio: "Ph.D. in Mathematics with 15+ years of teaching experience. Specializes in calculus, algebra, and preparing students for national olympiads.",
-    image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    specialties: ["Algebra", "Calculus", "Trigonometry", "Math Olympiad", "Statistics"]
+    name: "Prof. Sanjay Jha ( Founder & Director )",
+    title: "M.Sc. in Mathematics, M.Sc. in Chemistry, M.A. in Political Science and International Relations.",
+    bio: "Prof. Sanjay Jha, Founder and Director of Bright Minds, holds M.Sc. degrees in Mathematics and Chemistry. With over 20 years of teaching experience in top schools and as a UPSC achiever (2004), he is also a skilled counselor guiding students in academics and career planning",
+    image: "/sanjay.png"
   },
   {
     id: 2,
-    name: "Prof. Anita Sharma",
-    title: "Senior English Teacher",
-    bio: "12 years of teaching English literature and grammar. Passionate about creative writing and public speaking skills.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    specialties: ["Grammar", "Literature", "Creative Writing", "Public Speaking"]
+    name: "Rohit Sir",
+    title: "BSc IT, MA (Political Science & International Relations)",
+    bio: "6 years of experience in top schools and coaching institutes.UPSC Polity faculty for the last few years.",
+    image: "/rohit.jpg"
   },
-  {
-    id: 3,
-    name: "Dr. Sanjay Mehta",
-    title: "Science & Technology Instructor",
-    bio: "Former education researcher with expertise in high school science curriculum and interactive STEM teaching.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    specialties: ["Physics", "Chemistry", "Biology", "STEM Projects"]
-  },
-  {
-    id: 4,
-    name: "Ms. Priya Nair",
-    title: "Social Science Educator",
-    bio: "Expert in teaching geography and history with a decade of experience in creating interactive learning modules for middle school.",
-    image: "https://imgs.search.brave.com/O7g385qZFXR1HldtCRglx97edx7fd-3R2kc_HNSW9Kg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNC8w/OS8xNy8xMS80Ny9t/YW4tNDQ5NDA1XzY0/MC5qcGc",
-    specialties: ["Geography", "History", "Civics", "Environmental Studies"]
-  },
-  {
-    id: 5,
-    name: "Mr. Arjun Verma",
-    title: "Physical Education Coach",
-    bio: "Certified sports coach with a focus on holistic development through athletics, yoga, and team-building exercises.",
-    image: "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-    specialties: ["Sports", "Yoga", "Fitness", "Team Sports"]
-  }
+
 ];
 
 
