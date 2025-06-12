@@ -17,7 +17,7 @@ const InstructorCard: React.FC<InstructorCardProps> = ({ instructor }) => {
 
 
   return (
-    <Card className=" xl:h-[470px] h-[550px] shadow-lg hover:shadow-2xl rounded-2xl overflow-hidden group transition-all duration-500 hover:scale-105 will-change-transform bg-white border-0">
+    <Card className=" xl:h-[470px] h-[570px] shadow-lg hover:shadow-2xl rounded-2xl overflow-hidden group transition-all duration-500 hover:scale-105 will-change-transform bg-white border-0">
       {/* Image Section */}
 
       <div className="relative w-full h-[250px] overflow-hidden flex-shrink-0">
