@@ -16,6 +16,10 @@ export const headerOptions = [
     title: "Notes",
   },
   {
+    link: "/exams",
+    title: "Exam",
+  },
+  {
     link: "/gallery",
     title: "Gallery",
   },
@@ -23,6 +27,7 @@ export const headerOptions = [
     link: "/contact",
     title: "Contact",
   },
+  
 ];
 
  export const slides = [

@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import TopHeader from "@/components/TopHeader";
+import StatesProvider from "@/components/StatesProvider";
+import { ToastContainer } from "react-toastify";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,10 +35,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <StatesProvider>
         <TopHeader/>
         <Header/>
+        <ToastContainer/>
         {children}
         <Footer/>
+        </StatesProvider>
       </body>
     </html>
   );
