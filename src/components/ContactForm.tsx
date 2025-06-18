@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -24,6 +25,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 import { courses } from "@/constant";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const contactSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -54,10 +57,29 @@ export default function ContactForm({ selectedCoaching }: InquireFormProps) {
     }
   }, [selectedCoaching, form]);
 
-  const onSubmit = (data: ContactFormValues) => {
-    console.log("Form submitted:", data);
-    // Add API integration or toast here
-  };
+const onSubmit = async (data: ContactFormValues) => {
+  try {
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/cmsserver/Sendenquiry`,
+      {
+        payload: {
+          fullname: data.name,
+          email: data.email,
+          subject: data.coaching,
+          message: data.message,
+          db: process.env.NEXT_PUBLIC_DATABASE_NAME,
+        },
+      }
+    );
+    // Adjust based on your backend's actual response structure
+    const msg = response.data?.message || "Submitted successfully!";
+    toast.success(msg);
+  } catch (error: any) {
+    console.error("Submit error:", error);
+    toast.error(error?.response?.data?.message || "Submission failed. Try again.");
+  }
+};
+
 
   return (
     <section className="bg-white shadow-md rounded-xl p-8 max-w-4xl mx-auto">
@@ -102,17 +124,17 @@ export default function ContactForm({ selectedCoaching }: InquireFormProps) {
                 <FormLabel>Subject</FormLabel>
                 <FormControl>
                   <Select onValueChange={field.onChange} value={field.value}>
-                <SelectTrigger className="h-10 rounded-lg border-gray-300 focus:ring-2 focus:ring-tech-blue focus:border-tech-blue w-full">
-                  <SelectValue placeholder="Select a course" />
-                </SelectTrigger>
-                <SelectContent className="bg-white w-full">
-                  {courses.map((course) => (
-                    <SelectItem key={course.title} value={course.title}>
-                      {course.title}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+                    <SelectTrigger className="h-10 rounded-lg border-gray-300 focus:ring-2 focus:ring-tech-blue focus:border-tech-blue w-full">
+                      <SelectValue placeholder="Select a course" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white w-full">
+                      {courses.map((course) => (
+                        <SelectItem key={course.title} value={course.title}>
+                          {course.title}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </FormControl>
                 <FormMessage />
               </FormItem>
