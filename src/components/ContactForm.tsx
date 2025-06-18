@@ -32,6 +32,7 @@ const contactSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Invalid email address." }),
   coaching: z.string().min(3, { message: "Select atleast one option." }),
+  mobile: z.string().regex(/^\d{10,15}$/, { message: "Invalid mobile number." }),
   message: z.string().min(10, { message: "Message must be at least 10 characters." }),
 });
 
@@ -49,6 +50,7 @@ export default function ContactForm({ selectedCoaching }: InquireFormProps) {
       email: "",
       coaching: selectedCoaching || "",
       message: "",
+      mobile:""
     },
   });
   useEffect(() => {
@@ -57,28 +59,29 @@ export default function ContactForm({ selectedCoaching }: InquireFormProps) {
     }
   }, [selectedCoaching, form]);
 
-const onSubmit = async (data: ContactFormValues) => {
-  try {
-    const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/cmsserver/Sendenquiry`,
-      {
-        payload: {
-          fullname: data.name,
-          email: data.email,
-          subject: data.coaching,
-          message: data.message,
-          db: process.env.NEXT_PUBLIC_DATABASE_NAME,
-        },
-      }
-    );
-    // Adjust based on your backend's actual response structure
-    const msg = response.data?.message || "Submitted successfully!";
-    toast.success(msg);
-  } catch (error: any) {
-    console.error("Submit error:", error);
-    toast.error(error?.response?.data?.message || "Submission failed. Try again.");
-  }
-};
+  const onSubmit = async (data: ContactFormValues) => {
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/cmsserver/Sendenquiry`,
+        {
+          payload: {
+            fullname: data.name,
+            email: data.email,
+            subject: data.coaching,
+            message: data.message,
+            mobile: data.mobile,
+            db: process.env.NEXT_PUBLIC_DATABASE_NAME,
+          },
+        }
+      );
+      // Adjust based on your backend's actual response structure
+      const msg = response.data?.message || "Submitted successfully!";
+      toast.success(msg);
+    } catch (error: any) {
+      console.error("Submit error:", error);
+      toast.error(error?.response?.data?.message || "Submission failed. Try again.");
+    }
+  };
 
 
   return (
@@ -88,7 +91,7 @@ const onSubmit = async (data: ContactFormValues) => {
       </h2>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <FormField
               control={form.control}
               name="name"
@@ -97,6 +100,19 @@ const onSubmit = async (data: ContactFormValues) => {
                   <FormLabel>Full Name</FormLabel>
                   <FormControl>
                     <Input placeholder="John Doe" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="mobile"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Mobile Number</FormLabel>
+                  <FormControl>
+                    <Input placeholder="e.g:9234567890"  {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
