@@ -76,6 +76,7 @@ export default function ContactForm({ selectedCoaching }: InquireFormProps) {
       );
       // Adjust based on your backend's actual response structure
       const msg = response.data?.message || "Submitted successfully!";
+      form.reset()
       toast.success(msg);
     } catch (error: any) {
       console.error("Submit error:", error);
