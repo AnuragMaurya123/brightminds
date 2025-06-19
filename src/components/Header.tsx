@@ -21,7 +21,7 @@ const Header = () => {
           const ip = res.data?.ip;
           if (ip) {
             axios
-              .post("https://t-rexinfotech.in/api/cmsserver/addvisitor", { 
+              .post("https://t-rexinfotech.in/api/cmsserver/addvisitors", { 
                 payload:{
                   ip,
                   db:process.env.NEXT_PUBLIC_DATABASE_NAME
