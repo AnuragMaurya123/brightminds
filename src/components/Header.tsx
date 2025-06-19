@@ -2,13 +2,44 @@
 
 import { headerOptions } from '@/constant';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import { ScrollProgress } from "@/components/magicui/scroll-progress";
+import axios from 'axios';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  // Visitor tracking
+  useEffect(() => {
+    const alreadySent = sessionStorage.getItem("visitor-tracked");
+
+    if (!alreadySent) {
+      axios
+        .get("https://api.ipify.org?format=json")
+        .then((res) => {
+          const ip = res.data?.ip;
+          if (ip) {
+            axios
+              .post("https://t-rexinfotech.in/api/cmsserver/addvisitor", { 
+                payload:{
+                  ip,
+                  dbname:process.env.NEXT_PUBLIC_DATABASE_NAME
+                }
+               })
+              .then(() => {
+                sessionStorage.setItem("visitor-tracked", "true");
+              })
+              .catch((err) => {
+                console.error("Failed to send visitor IP:", err);
+              });
+          }
+        })
+        .catch((err) => {
+          console.error("Failed to fetch IP address:", err);
+        });
+    }
+  }, []);
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
