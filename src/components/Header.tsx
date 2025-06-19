@@ -24,7 +24,7 @@ const Header = () => {
               .post("https://t-rexinfotech.in/api/cmsserver/addvisitor", { 
                 payload:{
                   ip,
-                  dbname:process.env.NEXT_PUBLIC_DATABASE_NAME
+                  db:process.env.NEXT_PUBLIC_DATABASE_NAME
                 }
                })
               .then(() => {
