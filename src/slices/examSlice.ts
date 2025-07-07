@@ -129,10 +129,10 @@ export const submitAnswers = createAsyncThunk<
     return thunkAPI.rejectWithValue("Not found studentId or examId");
   }
 
-  const db = process.env.NEXT_PUBLIC_DATABASE_NAME;
+  const dbname = process.env.NEXT_PUBLIC_DATABASE_NAME;
   const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-  if (!db || !apiUrl) {
+  if (!dbname || !apiUrl) {
     return thunkAPI.rejectWithValue("Missing environment variables");
   }
 
@@ -146,7 +146,7 @@ export const submitAnswers = createAsyncThunk<
       student_id: studentId,
       exam_id: examId,
       score,
-      db,
+      dbname,
     }
      }
     );
