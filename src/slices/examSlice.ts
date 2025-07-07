@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { questionData } from "@/data/questionData";
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -65,51 +64,57 @@ const initialState: ExamState = {
 //
 // ── ASYNC THUNKS ───────────────────────────────────────────────────────────────
 //
-
-// 1) Login: fetch all questions
 export const loginExam = createAsyncThunk<
   { studentId: number; questions: ExamQuestion[]; examId: number },
   { studentId: number; password: string; examId: number },
-  { rejectValue: string }
->("exam/loginExam", async ({ studentId, examId, password }, thunkAPI) => {
-  try {
-    const response = await axios.post(
-      process.env.NEXT_PUBLIC_FRONTEND_URL + "/api/cmsserver/studentexamlogin",
-      {
-        payload: {
-          student_id: studentId,
-          exam_id: examId,
-          dbname: process.env.NEXT_PUBLIC_DATABASE_NAME?.toString(),
-          password: password,
-        },
-      }
-    );
+  { state: { exam: ExamState }; rejectValue: string }
+>(
+  "exam/loginExam",
+  async ({ studentId, examId, password }, thunkAPI) => {
+    try {
+      const response = await axios.post(
+        process.env.NEXT_PUBLIC_BACKEND_URL + "/studentexamlogin",
+        {
+          payload: {
+            student_id: studentId,
+            exam_id: examId,
+            dbname: process.env.NEXT_PUBLIC_DATABASE_NAME,
+            password: password,
+          },
+        }
+      );
 
-    const data: Array<{
-      qno: number;
-      questionname: string;
-      options: { id: string; value: string }[];
-      correct: string;
-    }> = response.data.payload;
+      const data: Array<{
+        qno: number;
+        questionname: string;
+        options: { id: string; value: string }[];
+        correct: string;
+      }> = response.data.payload;
 
-    const questions: ExamQuestion[] = data.map((q) => ({
-      id: `Q${q.qno}`,
-      question: q.questionname,
-      options: q.options.map((opt) => ({
-        id: opt.id,
-        value: opt.value,
-      })),
-      correctAnswerId: q.correct,
-      selectedAnswerId: undefined,
-    }));
+      const existingState = thunkAPI.getState().exam;
 
-    return { studentId, examId, questions };
-  } catch (err: any) {
-    const message =
-      err.response?.data?.message || err.message || "Login failed";
-    return thunkAPI.rejectWithValue(message);
+      const questions: ExamQuestion[] = data.map((q) => {
+        const existing = existingState.examQuestions.find(
+          (eq) => eq.id === `Q${q.qno}`
+        );
+
+        return {
+          id: `Q${q.qno}`,
+          question: q.questionname,
+          options: q.options,
+          correctAnswerId: q.correct,
+          selectedAnswerId: existing?.selectedAnswerId || undefined,
+        };
+      });
+
+      return { studentId, examId, questions };
+    } catch (err: any) {
+      const message =
+        err.response?.data?.message || err.message || "Login failed";
+      return thunkAPI.rejectWithValue(message);
+    }
   }
-});
+);
 
 // 2) Submit: send answers to backend
 export const submitAnswers = createAsyncThunk<
@@ -124,10 +129,10 @@ export const submitAnswers = createAsyncThunk<
     return thunkAPI.rejectWithValue("Not found studentId or examId");
   }
 
-  const dbname = process.env.NEXT_PUBLIC_DATABASE_NAME;
-  const apiUrl = process.env.NEXT_PUBLIC_FRONTEND_URL;
+  const db = process.env.NEXT_PUBLIC_DATABASE_NAME;
+  const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-  if (!dbname || !apiUrl) {
+  if (!db || !apiUrl) {
     return thunkAPI.rejectWithValue("Missing environment variables");
   }
 
@@ -135,18 +140,19 @@ export const submitAnswers = createAsyncThunk<
 
   try {
      const response = await axios.post(
-       apiUrl + "/api/cmsserver/studentexamsubmit",
+       apiUrl + "/studentexamsubmit",
      {
       payload:{
       student_id: studentId,
       exam_id: examId,
       score,
-      dbname,
+      db,
     }
      }
     );
     return response.data;
   } catch (err: any) {
+    console.log(err);
     console.error("Submit error", err.response?.data || err);
     const message =
       err.response?.data?.message || err.message || "Submission failed";
@@ -230,7 +236,7 @@ const examSlice = createSlice({
         state.studentId = studentId;
         state.examId = examId;
         state.isAuthenticated = true;
-        state.examQuestions = questions; 
+        state.examQuestions = questions;
         state.currentPageIndex = 0;
         state.timeRemaining = 60 * 60;
         state.submitted = false;

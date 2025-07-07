@@ -21,10 +21,10 @@ const Header = () => {
           const ip = res.data?.ip;
           if (ip) {
             axios
-              .post("https://t-rexinfotech.in/api/cmsserver/addvisitors", { 
+              .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/addvisitors`, { 
                 payload:{
                   ip,
-                  db:process.env.NEXT_PUBLIC_DATABASE_NAME
+                  db:process.env.NEXT_PUBLIC_DATABASE_NAME?.trim()
                 }
                })
               .then(() => {

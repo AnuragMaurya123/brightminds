@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image"
 import { BookOpen, Video, Users, Smile, Award } from "lucide-react"
 import StatCard from "./StatCard"

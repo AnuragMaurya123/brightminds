@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -41,90 +41,136 @@ const createSchema = (ids: string[], isFinal: boolean) =>
 
 /* ───────────────────────── component ───────────────────────── */
 export default function QuestionsPage() {
-  const dispatch = useAppDispatch();
-  const {
-    examQuestions,
-    currentPageIndex,
-    timeRemaining,
-    submitted,
-    score,
-  } = useAppSelector((s) => s.exam);
+  const dispatch = useAppDispatch()
+    const { examQuestions, currentPageIndex, timeRemaining, submitted, score } = useAppSelector(state => state.exam)
+    const mm = Math.floor(timeRemaining / 60).toString().padStart(2, '0')
+    const ss = (timeRemaining % 60).toString().padStart(2, '0')
 
-  /* Pagination */
-  const perPage = 10;
-  const totalPages = Math.ceil(examQuestions.length / perPage);
-  const start = currentPageIndex * perPage;
-  const currentQs = submitted
-    ? examQuestions
-    : examQuestions.slice(start, start + perPage);
+    // Pagination setup
+    const perPage = 10;
+    const totalPages = Math.ceil(examQuestions.length / perPage);
+    const start = currentPageIndex * perPage;
 
-  const ids = currentQs.map((q) => q.id);
-  const isFinal = currentPageIndex === totalPages - 1;
+    // If submitted, show all questions. Otherwise, only the current page.
+    const currentQs = submitted
+      ? examQuestions
+      : examQuestions.slice(start, start + perPage);
 
-  /* Form setup */
-  const defaultValues = useMemo(
-    () => Object.fromEntries(currentQs.map((q) => [q.id, q.selectedAnswerId || ""])),
-    [currentQs]
-  );
+    // Collect question IDs on this page
+    const questionids = currentQs.map((q) => q.id);
+    const isFinalPage = currentPageIndex === totalPages - 1;
 
-  const schema = useMemo(() => createSchema(ids, isFinal), [ids, isFinal]);
+    //
+    const initialDefaults = useMemo(
+      () =>
+        Object.fromEntries(
+          currentQs.map((q) => [q.id, q.selectedAnswerId || ""])
+        ),
+      [currentQs]
+    );
 
-  const form = useForm<Record<string, string | undefined>>({
-    resolver: zodResolver(schema),
-    defaultValues,
-    mode: "onChange",
-  });
-  const { isValid } = form.formState;
+    // Create Zod schema dynamically
+    const schema = useMemo(
+      () => createSchema(questionids, isFinalPage),
+      [questionids, isFinalPage]
+    );
 
-  /* Effects */
-  useEffect(() => window.scrollTo({ top: 0, behavior: "smooth" }), [currentPageIndex]);
-
-  useEffect(() => {
-    if (submitted) return;
-    const id = setInterval(() => dispatch(tickTimer()), 1000);
-    return () => clearInterval(id);
-  }, [submitted, dispatch]);
-
-  useEffect(() => {
-    if (timeRemaining <= 0 && !submitted) {
-      dispatch(forceSubmit())
-        .unwrap()
-        .then(() => toast.info("Time’s up! Auto‑submitted."))
-        .catch(() => toast.error("Auto‑submit failed. Please log in again."));
-    }
-  }, [timeRemaining, submitted, dispatch]);
-
-  /* Helpers */
-  const mm = String(Math.floor(timeRemaining / 60)).padStart(2, "0");
-  const ss = String(timeRemaining % 60).padStart(2, "0");
-
-  const savePageAnswers = () => {
-    const vals = form.getValues();
-    Object.entries(vals).forEach(([qid, ans]) => {
-      if (ans) dispatch(selectAnswer({ questionId: qid, answerId: ans }));
+    const form = useForm<Record<string, string | undefined>>({
+      resolver: zodResolver(schema),
+      defaultValues: initialDefaults,
+      mode: "onChange", // so we can disable the Next/Submit button if invalid
     });
-  };
+    const { isValid } = form.formState;
 
-  const handlePrev = () => {
-    if (currentPageIndex === 0) return;
-    savePageAnswers();
-    dispatch(prevPage());
-  };
+    // Keep track of previous defaults to avoid infinite resets
+    const prevDefaultsRef = useRef<Record<string, string> | null>(null);
+    useEffect(() => {
+      const defaults = Object.fromEntries(
+        currentQs.map((q) => [q.id, q.selectedAnswerId || ""])
+      );
+    
+      const prev = prevDefaultsRef.current;
+      const changed = !prev || Object.keys(defaults).some((key) => prev[key] !== defaults[key]);
+    
+      if (changed) {
+        form.reset(defaults);
+        prevDefaultsRef.current = defaults;
+      }
+    }, [currentQs, form]);
+    
 
-  const onSubmit = (vals: Record<string, string | undefined>) => {
-    Object.entries(vals).forEach(([qid, ans]) => {
-      if (ans) dispatch(selectAnswer({ questionId: qid, answerId: ans }));
-    });
+    // Scroll to top whenever page index changes
+    useEffect(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, [currentPageIndex]);
 
-    if (currentPageIndex < totalPages - 1) {
-      dispatch(nextPage());
-    } else {
-      dispatch(submitAnswers())
-        .unwrap()
-        .then((r) => toast.success(r.message || "Submitted!"))
-        .catch((e) => toast.error(e?.message || "Submit failed."));
-    }
-  };
+    // Tick the timer every second (until submitted)
+    useEffect(() => {
+      if (submitted) return;
+      const interval = setInterval(() => dispatch(tickTimer()), 1000);
+      return () => clearInterval(interval);
+    }, [submitted, dispatch]);
+
+    // When timeRemaining reaches 0, dispatch forceSubmit
+    useEffect(() => {
+      if (timeRemaining <= 0 && !submitted) {
+        dispatch(forceSubmit())
+          .unwrap()
+          .then(() => {
+            toast.info("Time is up! Your exam was submitted automatically.");
+          })
+          .catch(() => {
+            toast.error("Failed to auto-submit exam. Please Login again.");
+          });
+      }
+    }, [timeRemaining, submitted, dispatch]);
+
+    // Save answers to Redux, skipping empty strings
+    const saveCurrentAnswers = () => {
+      const values = form.getValues();
+      Object.entries(values).forEach(([qid, ans]) => {
+        if (ans && ans !== "") {
+          dispatch(selectAnswer({ questionId: qid, answerId: ans }));
+        }
+      });
+    };
+
+    const handlePrev = () => {
+      if (currentPageIndex === 0) return;
+      saveCurrentAnswers();
+      dispatch(prevPage());
+    };
+
+    // Submit handler: either Next Page or final submit
+    const onSubmit = (values: Record<string, string | undefined>) => {
+      Object.entries(values).forEach(([qid, ans]) => {
+        if (ans && ans !== "") {
+          dispatch(selectAnswer({ questionId: qid, answerId: ans }));
+        }
+      });
+
+      if (currentPageIndex < totalPages - 1) {
+        dispatch(nextPage());
+      } else {
+        dispatch(submitAnswers())
+          .unwrap()
+          .then((res) => {
+            toast.success(res.message || "Exam submitted successfully!");
+          })
+          .catch((err) => {
+            console.log(err);
+            
+            toast.error(err?.message || "Error submitting exam. Please try again.");
+          });
+
+      }
+    };
+
+    // If validation fails on the final page
+    const onError = (errors: any) => {
+      console.log("Validation errors:", errors);
+      toast.error("Please answer all required questions before submitting.");
+    };
 
   /* ───────────────────────── render ───────────────────────── */
   return (
@@ -135,7 +181,7 @@ export default function QuestionsPage() {
           <span className="text-sm font-semibold text-gray-700">⏱ Time Left:</span>
           <span className="px-4 py-1 rounded-full bg-amber-100 text-amber-700 font-mono text-lg">
             {mm}:{ss}
-          </span>
+          </span> 
         </div>
       )}
 

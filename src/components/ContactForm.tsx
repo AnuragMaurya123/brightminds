@@ -62,7 +62,7 @@ export default function ContactForm({ selectedCoaching }: InquireFormProps) {
   const onSubmit = async (data: ContactFormValues) => {
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/cmsserver/Sendenquiry`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/Sendenquiry`,
         {
           payload: {
             fullname: data.name,
